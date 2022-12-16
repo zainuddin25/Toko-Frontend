@@ -1,0 +1,20 @@
+<div class="w-screen h-screen flex justify-center items-center">
+    <div class="h-full w-2/4 p-10 flex items-center justify-center">
+        <div class="w-3/4 border-2 border-black rounded-lg">
+            <h1 class="text-center text-2xl font-bold pb-4 pt-10">Login Page</h1>
+            <p class="text-xs px-20 text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore illo corporis reiciendis! Voluptates totam</p>
+            <div class="w-3/4 mx-auto my-20">
+                <form [formGroup]="loginForm">
+                    <input class="w-full outline-none border-b text-sm py-2 my-2" placeholder="Username" formControlName="username">
+                    <input class="w-full outline-none border-b text-sm py-2 my-2" placeholder="Password" type="password" formControlName="password">
+                    <button class="w-full bg-black mt-10 py-3 rounded-lg text-center text-white" (click)="loginButton()">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="h-full w-2/4 bg-cover">
+        <div class="w-full h-full p-5 flex items-center">
+            <img class="rounded-lg" src="../../../assets/welcome.jpg" />
+        </div>
+    </div>
+</div>
