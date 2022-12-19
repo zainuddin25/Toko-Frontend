@@ -9,7 +9,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/owner/dashboard/dashboard.component';
 import { HeaderComponent } from './components/owner/header/header.component';
 import { SideBarComponent } from './components/owner/side-bar/side-bar.component';
-import { MembersComponent } from './pages/members/members.component';
+import { MembersComponent } from './pages/owner/members/members.component';
+
+import { MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ModalEditUserComponent } from './components/owner/modal-edit-user/modal-edit-user.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -19,13 +27,20 @@ import { MembersComponent } from './pages/members/members.component';
     HeaderComponent,
     SideBarComponent,
     MembersComponent,
+    ModalEditUserComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

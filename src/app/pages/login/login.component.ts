@@ -22,7 +22,7 @@ export class LoginComponent {
   })
 
   loginButton(){
-    this.httpClient.post<any>('http://localhost:3000/auth/login', {
+    this.httpClient.post<any>('http://localhost:3222/auth/login', {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }, {
@@ -30,9 +30,10 @@ export class LoginComponent {
     })
     .subscribe(
       response => {
-        const token = response.body?.data
+        const token = response.body?.accessToken
         const decode: any = jwtDecode(token)
-        const roleName = decode.role.role_name
+        const roleName = decode.role[0].name
+
 
         if (roleName === 'owner') {
           this.router.navigate(['/owner-dashboard'])

@@ -1,0 +1,24 @@
+<div class="p-10">
+    <h1 class="mb-10 text-2xl">Form Edit Data Users</h1>
+    <form [formGroup]="users">
+        <div class="flex flex-col">
+            <label class="mb-2">Username</label>
+            <input class="w-[500px] outline-none border border-black rounded px-4 py-2" formControlName="username" value="Hallo" type="text" />
+        </div>
+        <div class="flex flex-col my-3">
+            <label class="mb-2">Role</label>
+            <select class="outline-none border border-black w-full px-2 py-2 rounded" formControlName="role">
+                <option value="gudang">Gudang</option>
+                <option value="kasir">Kasir</option>
+            </select>
+        </div>
+    </form>
+    <div class="w-full flex mt-20 justify-end">
+        <button mat-button mat-dialog-close class="py-2 border w-[150px] text-sm mx-2 border-black rounded hover:bg-black hover:text-white duration-300">
+            Batal
+        </button>
+        <button class="py-2 border w-[150px] text-sm mx-2 border-black rounded bg-black text-white">
+            Simpan
+        </button>
+    </div>
+</div>
