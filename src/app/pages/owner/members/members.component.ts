@@ -49,11 +49,15 @@ export class MembersComponent {
     console.log(this.idUsers)
   }
 
-  openDialog() {
+  openDialog(id: string) {
     const dialogRef = this.dialog.open(ModalEditUserComponent);
 
+    dialogRef.afterOpened().subscribe(result => {
+      console.log(id)
+    })
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      console.log(id)
     });
   }
 

@@ -18,6 +18,7 @@ import { ModalEditUserComponent } from './components/owner/modal-edit-user/modal
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { ModalAddMembersComponent } from './components/owner/modal-add-members/modal-add-members.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatSelectModule } from '@angular/material/select';
     SideBarComponent,
     MembersComponent,
     ModalEditUserComponent,
+    ModalAddMembersComponent,
   ],
   imports: [
     BrowserModule,

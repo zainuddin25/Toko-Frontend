@@ -40,7 +40,7 @@
                     <th mat-header-cell *matHeaderCellDef class="w-[15%]"> Opsi </th>
                     <td mat-cell *matCellDef="let element" class="w-[15]"> 
                         <!-- mat-button (click)="openDialog()" -->
-                        <button (click)="openDialog()">Edit Data</button> | <button (click)="setId(element.id)">Delete Data</button>    
+                        <button (click)="openDialog(element.id)">Edit Data</button> | <button (click)="setId(element.id)">Delete Data</button>    
                     </td>
                   </ng-container>
               
