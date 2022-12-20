@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ModalAddMembersComponent } from './components/owner/modal-add-members/modal-add-members.component';
 import { DeleteUserComponent } from './components/owner/delete-user/delete-user.component';
+import { ProductsComponent } from './pages/owner/products/products.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DeleteUserComponent } from './components/owner/delete-user/delete-user.
     ModalEditUserComponent,
     ModalAddMembersComponent,
     DeleteUserComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
