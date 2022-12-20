@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { DeleteUserComponent } from 'src/app/components/owner/delete-user/delete-user.component';
 import { ModalEditUserComponent } from 'src/app/components/owner/modal-edit-user/modal-edit-user.component';
 
 @Component({
@@ -44,12 +45,28 @@ export class MembersComponent {
     )
   }
 
+  deleteUsers(id: string) {
+    const accessToken = localStorage.getItem('accessToken')
+
+    this.httpClient.delete(`http://localhost/3222/users/delete/${id}`, {
+      headers: ({
+        'Authorization' : `Bearer ${accessToken}`
+      }),
+      observe: 'response'
+    })
+    .subscribe(
+      response => {
+        this.getAllUsers()
+      }
+    )
+  }
+
   setId(id: string){
     this.idUsers = id
     console.log(this.idUsers)
   }
 
-  openDialog(id: string) {
+  openDialogEdit(id: string) {
     const dialogRef = this.dialog.open(ModalEditUserComponent);
 
     dialogRef.afterOpened().subscribe(result => {
@@ -59,6 +76,14 @@ export class MembersComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(id)
     });
+  }
+
+  openDialogDelete(id: string) {
+    const dialogRef = this.dialog.open(DeleteUserComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.deleteUsers(id)
+    })
   }
 
 }

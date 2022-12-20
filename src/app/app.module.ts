@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ModalAddMembersComponent } from './components/owner/modal-add-members/modal-add-members.component';
+import { DeleteUserComponent } from './components/owner/delete-user/delete-user.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ModalAddMembersComponent } from './components/owner/modal-add-members/m
     MembersComponent,
     ModalEditUserComponent,
     ModalAddMembersComponent,
+    DeleteUserComponent,
   ],
   imports: [
     BrowserModule,
