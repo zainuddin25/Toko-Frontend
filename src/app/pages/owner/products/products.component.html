@@ -13,52 +13,42 @@
                     <button class="border py-2 px-3 border-black rounded hover:text-white hover:bg-black duration-300 text-xs"><i class="fa-solid fa-magnifying-glass mr-2"></i> Search Prodcut</button>
                 </div>
             </div>
-            <div class="w-full h-[95%] pt-5">
-                <div class="mat-elevation-z8">
-                    <table mat-table [dataSource]="dataSource">
-                  
-                      <!-- Position Column -->
+            <div class="w-full h-[95%] py-5">
+                <div class="mat-elevation-z8 h-full overflow-scroll overflow-x-hidden">
+                    <table mat-table [dataSource]="dataPeroducts">
                       <ng-container matColumnDef="position">
-                        <th mat-header-cell *matHeaderCellDef></th>
+                        <th mat-header-cell *matHeaderCellDef class="w-[5%] font-bold"></th>
                         <td mat-cell *matCellDef="let element"> <i class="fa-solid fa-circle text-[5px]"></i> </td>
                       </ng-container>
                   
-                      <!-- Name Column -->
                       <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef> Product Name </th>
-                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        <th mat-header-cell *matHeaderCellDef class="w-[25%] font-bold"> Product Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.product_name}} </td>
                       </ng-container>
                   
-                      <!-- Weight Column -->
                       <ng-container matColumnDef="weight">
-                        <th mat-header-cell *matHeaderCellDef> Price </th>
-                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                        <th mat-header-cell *matHeaderCellDef class="w-[20%]"> Price </th>
+                        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
                       </ng-container>
-                  
-                      <!-- Symbol Column -->
+
                       <ng-container matColumnDef="symbol">
-                        <th mat-header-cell *matHeaderCellDef> Ready Stock </th>
-                        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                        <th mat-header-cell *matHeaderCellDef class="w-[15%]"> Ready Stock </th>
+                        <td mat-cell *matCellDef="let element"> {{element.ready_stock}} </td>
                       </ng-container>
 
                       <ng-container matColumnDef="category">
-                        <th mat-header-cell *matHeaderCellDef> Category Product </th>
-                        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                        <th mat-header-cell *matHeaderCellDef class="w-[20%]"> Category Product </th>
+                        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
                       </ng-container>
 
                       <ng-container matColumnDef="werehouse">
-                        <th mat-header-cell *matHeaderCellDef> Warehouse Name </th>
-                        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                        <th mat-header-cell *matHeaderCellDef class="w-[15%]"> Warehouse Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.user?.username}} </td>
                       </ng-container>
                   
                       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
-                  
-                    <mat-paginator [pageSizeOptions]="[8, 5, 3]"
-                                   showFirstLastButtons
-                                   aria-label="Select page of periodic elements">
-                    </mat-paginator>
                   </div>
             </div>
         </div>

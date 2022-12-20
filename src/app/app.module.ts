@@ -21,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ModalAddMembersComponent } from './components/owner/modal-add-members/modal-add-members.component';
 import { DeleteUserComponent } from './components/owner/delete-user/delete-user.component';
 import { ProductsComponent } from './pages/owner/products/products.component';
+import { SettingProductComponent } from './pages/owner/setting-product/setting-product.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ProductsComponent } from './pages/owner/products/products.component';
     ModalAddMembersComponent,
     DeleteUserComponent,
     ProductsComponent,
+    SettingProductComponent,
   ],
   imports: [
     BrowserModule,

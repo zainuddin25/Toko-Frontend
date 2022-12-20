@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode'
@@ -9,16 +10,49 @@ import jwtDecode from 'jwt-decode'
 })
 export class DashboardComponent {
 
+  totalProduct: number = 0
+  totalMembers: number = 0
+
   constructor(
-    private router : Router
+    private router : Router,
+    private httpClient: HttpClient
   ) {}
 
-  token: any = localStorage.getItem('accessToken')
+  ngOnInit() {
+    this.getDataProduct()
+    this.getDataMembers()
+  }
   
-  // ngOnInit(){
-  //   if (this.token == null) {
-  //     this.router.navigate(['/login'])
-  //   }
-  // }
+  getDataProduct() {
+    const token = localStorage.getItem('accessToken')
+
+    this.httpClient.get<any>('http://localhost:3222/product', {
+      headers: ({
+        'Authorization' : `Bearer ${token}`
+      }),
+      observe : 'response'
+    })
+    .subscribe(
+      response => {
+        this.totalProduct = response.body?.count
+      }
+    )
+  }
+
+  getDataMembers() {
+    const token = localStorage.getItem('accessToken')
+
+    this.httpClient.get<any>('http://localhost:3222/users', {
+      headers: ({
+        'Authorization' : `Bearer ${token}`
+      }),
+      observe: 'response'
+    })
+    .subscribe(
+      response => {
+        this.totalMembers = response.body?.count
+      }
+    )
+  }
 
 }
