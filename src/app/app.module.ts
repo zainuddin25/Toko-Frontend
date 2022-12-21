@@ -23,8 +23,9 @@ import { DeleteUserComponent } from './components/owner/delete-user/delete-user.
 import { ProductsComponent } from './pages/owner/products/products.component';
 import { SettingProductComponent } from './pages/owner/setting-product/setting-product.component';
 import { SearchComponent } from './components/owner/search/search.component';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 
-import { NgxBarcodeModule } from 'ngx-barcode'
+import { AddProductComponent } from './components/owner/add-product/add-product.component'
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NgxBarcodeModule } from 'ngx-barcode'
     ProductsComponent,
     SettingProductComponent,
     SearchComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ import { NgxBarcodeModule } from 'ngx-barcode'
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    NgxBarcodeModule
+    MdbModalModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

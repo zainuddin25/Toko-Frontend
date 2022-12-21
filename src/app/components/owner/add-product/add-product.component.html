@@ -1,0 +1,26 @@
+<div class="py-10 px-20">
+    <h1 class="text-2xl font-bold text-center">Tambah Produk</h1>
+    <div class="w-[400px] my-4">
+        <form class="w-full" [formGroup]="add_product">
+            <div class="my-2">
+                <label for="product_name text-sm">Nama Produk</label>
+                <input class="w-full outline-none border-2 px-4 py-2 text-sm rounded mt-2 border-black" formControlName="product_name" />
+            </div>
+            <div class="my-2">
+                <label for="product_name text-sm">Kategori</label>
+                <input class="w-full outline-none border-2 px-4 py-2 text-sm rounded mt-2 border-black" formControlName="category" />
+            </div>
+            <div class="my-2 flex">
+                <div class="w-2/4 mr-2">
+                    <label for="product_name text-sm">Stock</label>
+                    <input class="w-full outline-none border-2 px-4 py-2 text-sm rounded mt-2 border-black" formControlName="ready_stock" type="number" />
+                </div>
+                <div class="w-2/4 ml-2">
+                    <label for="product_name text-sm">Harga</label>
+                    <input class="w-full outline-none border-2 px-4 py-2 text-sm rounded mt-2 border-black" formControlName="price" type="number" />
+                </div>
+            </div>
+        </form>
+        <button class="w-full mt-4 border-2 border-black py-2 rounded bg-black text-white" (click)="addProduct()" mat-dialog-close>Tambah Produk</button>
+    </div>
+</div>

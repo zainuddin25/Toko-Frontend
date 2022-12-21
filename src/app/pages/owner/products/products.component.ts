@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { AddProductComponent } from 'src/app/components/owner/add-product/add-product.component';
 
 @Component({
   selector: 'app-products',
@@ -23,7 +25,10 @@ export class ProductsComponent {
   // @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(){
     this.getDataProducts()
@@ -64,5 +69,33 @@ export class ProductsComponent {
       this.getDataProducts()
     }
     this.getDataProducts()
+  }
+
+  onChangeSearch(e: any) {
+    const token = localStorage.getItem('accessToken')
+
+    if (e.target.value == '') {
+      this.getDataProducts()
+    } else {
+      this.httpClient.get<any>(`http://localhost:3222/product/search/${e.target.value}`, {
+        headers: ({
+          'Authorization' : `Bearer ${token}`
+        }),
+        observe : 'response'
+      })
+      .subscribe(
+        response => {
+          this.dataPeroducts = response.body.data
+        }
+      )
+    }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AddProductComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getDataProducts()
+    });
   }
 }
