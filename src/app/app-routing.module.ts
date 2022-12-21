@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/owner/dashboard/dashboard.component';
 import { MembersComponent } from './pages/owner/members/members.component';
 import { ProductsComponent } from './pages/owner/products/products.component';
+import { SettingProductComponent } from './pages/owner/setting-product/setting-product.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'owner-products',
     component: ProductsComponent
+  },
+  {
+    path: 'owner-setting-product',
+    component: SettingProductComponent
   }
 ];
 

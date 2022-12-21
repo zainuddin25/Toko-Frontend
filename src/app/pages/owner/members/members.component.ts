@@ -15,7 +15,7 @@ import { ModalEditUserComponent } from 'src/app/components/owner/modal-edit-user
 export class MembersComponent {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  // @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
   dataUsers: any = []
   idUsers: string = ''

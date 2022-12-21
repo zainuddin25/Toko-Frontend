@@ -15,7 +15,7 @@ export class ProductsComponent {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'category', 'werehouse'];
 
-  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  // @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort
 
   constructor(private httpClient: HttpClient) {}
@@ -37,10 +37,10 @@ export class ProductsComponent {
       response => {
         this.dataPeroducts = response.body?.data
         const list_product = new MatTableDataSource<any>(this.dataPeroducts)
-        list_product.paginator = this.paginator;
+        // list_product.paginator = this.paginator;
 
         // console.log(this.paginator.MatPaginator)
-        console.log(this.paginator.MatPaginator)
+        // console.log(this.paginator.MatPaginator)
       }
     )
   }
