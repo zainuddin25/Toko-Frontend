@@ -34,7 +34,7 @@ export class DashboardComponent {
     })
     .subscribe(
       response => {
-        this.totalProduct = response.body?.count
+        this.totalProduct = response.body.meta.totalItems
       }
     )
   }

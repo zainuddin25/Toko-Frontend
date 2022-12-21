@@ -24,6 +24,8 @@ import { ProductsComponent } from './pages/owner/products/products.component';
 import { SettingProductComponent } from './pages/owner/setting-product/setting-product.component';
 import { SearchComponent } from './components/owner/search/search.component';
 
+import { NgxBarcodeModule } from 'ngx-barcode'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,8 @@ import { SearchComponent } from './components/owner/search/search.component';
     MatPaginatorModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxBarcodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,6 +13,11 @@ export class ProductsComponent {
 
   public dataPeroducts: any = []
 
+  itemsTotal = 0
+  page: number = 1
+  limit: number = 10  
+  maxPage: number = 0
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'category', 'werehouse'];
 
   // @ViewChild(MatPaginator) paginator: any = MatPaginator;
@@ -27,7 +32,7 @@ export class ProductsComponent {
   getDataProducts() {
     const accessToken = localStorage.getItem('accessToken')
 
-    this.httpClient.get<any>('http://localhost:3222/product', {
+    this.httpClient.get<any>(`http://localhost:3222/product?page=${this.page}&limit=${this.limit}`, {
       headers: ({
         'Authorization' : `Bearer ${accessToken}`
       }),
@@ -35,13 +40,29 @@ export class ProductsComponent {
     })
     .subscribe(
       response => {
-        this.dataPeroducts = response.body?.data
-        const list_product = new MatTableDataSource<any>(this.dataPeroducts)
-        // list_product.paginator = this.paginator;
-
-        // console.log(this.paginator.MatPaginator)
-        // console.log(this.paginator.MatPaginator)
+        this.dataPeroducts = response.body.items
+        this.itemsTotal = response.body.meta.totalItems
+        const max = this.itemsTotal / this.limit
+        this.maxPage = Math.ceil(max)
       }
     )
+  }
+
+  handleNextBuutton() {
+    this.page += 1
+    if (this.page > this.maxPage) {
+      this.page = this.maxPage
+      this.getDataProducts()
+    }
+    this.getDataProducts()
+  }
+
+  handleBackButton() {
+    this.page -= 1
+    if (this.page == 0) {
+      this.page = 1
+      this.getDataProducts()
+    }
+    this.getDataProducts()
   }
 }
