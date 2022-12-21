@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { SearchComponent } from 'src/app/components/owner/search/search.component';
 
 @Component({
   selector: 'app-setting-product',
@@ -22,7 +24,10 @@ export class SettingProductComponent {
 
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(){
     this.getDataProducts()
@@ -42,9 +47,6 @@ export class SettingProductComponent {
         this.dataPeroducts = response.body?.data
         const list_product = new MatTableDataSource<any>(this.dataPeroducts)
         list_product.paginator = this.paginator;
-
-        // console.log(this.paginator.MatPaginator)
-        // console.log(this.paginator.MatPaginator)
       }
     )
   }
@@ -60,23 +62,21 @@ export class SettingProductComponent {
     })
     .subscribe(
       response => {
-        // this.detailProduct = response.body
         this.product_name = response.body.product_name
         this.ready_stock = response.body.ready_stock
         this.username = response.body.user?.username
         this.category = response.body.category
         this.price = response.body.price
         this.id = response.body.id.slice(24, 36)
-
-        
-        // console.log(response.body.id.slice(24, 36))
-        // console.log(this.product_name)
-        // console.log(this.ready_stock)
-        // console.log(this.category)
-        // console.log(this.username)
-        // console.log(this.price)
-        // console.log(this.id)
       }
     )
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(SearchComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

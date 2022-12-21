@@ -22,6 +22,7 @@ import { ModalAddMembersComponent } from './components/owner/modal-add-members/m
 import { DeleteUserComponent } from './components/owner/delete-user/delete-user.component';
 import { ProductsComponent } from './pages/owner/products/products.component';
 import { SettingProductComponent } from './pages/owner/setting-product/setting-product.component';
+import { SearchComponent } from './components/owner/search/search.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SettingProductComponent } from './pages/owner/setting-product/setting-p
     DeleteUserComponent,
     ProductsComponent,
     SettingProductComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,12 @@
         </div>
         <div class="w-full h-[90%] px-10">
             <div class="w-full h-[5%] flex items-center justify-between">
-                <p class="text-sm"><span class="font-extrabold">></span> Home / <span class="font-bold">Products</span></p>
+                <div class="w-full h-[5%] flex items-center justify-between">
+                    <p class="text-sm"><span class="font-extrabold">></span> Home / <span class="font-bold">Products Setting</span></p>
+                    <div class="flex items-center" (click)="openDialog()">
+                        <button class="border py-2 px-3 border-black rounded hover:text-white hover:bg-black duration-300 text-xs"><i class="fa-solid fa-magnifying-glass mr-2"></i> Search Prodcut</button>
+                    </div>
+                </div>    
             </div>
             <div class="w-full h-[95%] py-5 flex">
                 <div class="mat-elevation-z8 h-full overflow-scroll overflow-x-hidden w-2/4 mr-2">
@@ -34,11 +39,11 @@
                     <h1 class="text-center text-xl font-bold">Detail Product</h1>
                     <div class="w-3/4 mx-auto mt-4">
                         <p>Product Name : {{product_name}}</p>
-                        <p>Product Name : {{ready_stock}}</p>
-                        <p>Product Name : {{category}}</p>
-                        <p>Product Name : {{price}}</p>
-                        <p>Product Name : {{username}}</p>
-                        <p>Product Name : {{id}}</p>
+                        <p>Stock Product : {{ready_stock}}</p>
+                        <p>Category : {{category}}</p>
+                        <p>Price / Product : {{price}}</p>
+                        <p>Werehouse : {{username}}</p>
+                        <p>Product Code : {{id}}</p>
                     </div>
                 </div>
             </div>
