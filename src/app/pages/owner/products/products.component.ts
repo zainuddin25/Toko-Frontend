@@ -77,7 +77,7 @@ export class ProductsComponent {
     if (e.target.value == '') {
       this.getDataProducts()
     } else {
-      this.httpClient.get<any>(`http://localhost:3222/product/search/${e.target.value}`, {
+      this.httpClient.get<any>(`http://localhost:3222/product?search=${e.target.value}`, {
         headers: ({
           'Authorization' : `Bearer ${token}`
         }),
@@ -85,7 +85,7 @@ export class ProductsComponent {
       })
       .subscribe(
         response => {
-          this.dataPeroducts = response.body.data
+          this.dataPeroducts = response.body.items
         }
       )
     }
