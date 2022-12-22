@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddProductComponent } from 'src/app/components/owner/add-product/add-product.component';
+import { DeleteProductComponent } from 'src/app/components/owner/delete-product/delete-product.component';
 
 @Component({
   selector: 'app-products',
@@ -97,5 +98,34 @@ export class ProductsComponent {
     dialogRef.afterClosed().subscribe(result => {
       this.getDataProducts()
     });
+  }
+
+  // deleteDialog() {
+  //   this.dialog.open(DeleteProductComponent);
+  // }
+
+  deleteData(id: string) {
+    const token = localStorage.getItem('accessToken')
+    this.httpClient.delete(`http://localhost:3222/product/delete/${id}`, {
+      headers: ({
+        'Authorization' : `Bearer ${token}`
+      }),
+      observe : 'response'
+    })
+    .subscribe(
+      response => {
+        // this.getDataProducts()
+        // console.log(response.body)
+        // console.log(response.status)
+        if (response.status === 200) {
+          const dialogRef = this.dialog.open(DeleteProductComponent)
+
+          dialogRef.afterClosed().subscribe(result => {
+            this.getDataProducts()
+          })
+          // this.dialog.open(DeleteProductComponent)
+        }
+      }
+    )
   }
 }

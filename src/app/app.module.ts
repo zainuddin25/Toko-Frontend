@@ -25,7 +25,8 @@ import { SettingProductComponent } from './pages/owner/setting-product/setting-p
 import { SearchComponent } from './components/owner/search/search.component';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 
-import { AddProductComponent } from './components/owner/add-product/add-product.component'
+import { AddProductComponent } from './components/owner/add-product/add-product.component';
+import { DeleteProductComponent } from './components/owner/delete-product/delete-product.component'
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AddProductComponent } from './components/owner/add-product/add-product.
     SettingProductComponent,
     SearchComponent,
     AddProductComponent,
+    DeleteProductComponent,
   ],
   imports: [
     BrowserModule,

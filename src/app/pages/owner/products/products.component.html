@@ -36,7 +36,7 @@
                 <h1 class="w-[20%] text-sm">RP {{product.price}},00</h1>
                 <h1 class="w-[20%] text-sm">{{product.category}}</h1>
                 <h1 class="w-[20%] text-sm">{{product.user?.username}}</h1>
-                <h1 class="w-[20%] text-sm cursor-pointer">Hapus Data</h1>
+                <h1 class="w-[20%] text-sm cursor-pointer" (click)="deleteData(product.id)">Hapus Data</h1>
               </div>
             </div>
         </div>
