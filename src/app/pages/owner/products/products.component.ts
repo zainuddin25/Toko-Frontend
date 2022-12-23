@@ -20,10 +20,10 @@ export class ProductsComponent {
   page: number = 1
   limit: number = 10  
   maxPage: number = 0
+  not_found_notification: string = 'hidden'
+  found_table: string = 'visible'
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'category', 'werehouse'];
-
-  // @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort
 
   constructor(
@@ -86,7 +86,18 @@ export class ProductsComponent {
       })
       .subscribe(
         response => {
-          this.dataPeroducts = response.body.items
+          this.itemsTotal = response.body.meta.totalItems
+          const max = this.itemsTotal / this.limit
+          this.maxPage = Math.ceil(max)
+
+          if (this.itemsTotal === 0) {
+            this.found_table = 'hidden'
+            this.not_found_notification = 'visible'
+          } else {
+            this.dataPeroducts = response.body.items
+            this.found_table = 'visible'
+            this.not_found_notification = 'hidden'
+          }
         }
       )
     }
@@ -100,10 +111,6 @@ export class ProductsComponent {
     });
   }
 
-  // deleteDialog() {
-  //   this.dialog.open(DeleteProductComponent);
-  // }
-
   deleteData(id: string) {
     const token = localStorage.getItem('accessToken')
     this.httpClient.delete(`http://localhost:3222/product/delete/${id}`, {
@@ -114,16 +121,12 @@ export class ProductsComponent {
     })
     .subscribe(
       response => {
-        // this.getDataProducts()
-        // console.log(response.body)
-        // console.log(response.status)
         if (response.status === 200) {
           const dialogRef = this.dialog.open(DeleteProductComponent)
 
           dialogRef.afterClosed().subscribe(result => {
             this.getDataProducts()
           })
-          // this.dialog.open(DeleteProductComponent)
         }
       }
     )

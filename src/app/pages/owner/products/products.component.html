@@ -13,7 +13,7 @@
                 <!-- <button class="border-2 py-2 px-3 border-black rounded hover:text-white hover:bg-black duration-300 text-xs mr-4"><i class="fa-solid fa-magnifying-glass"></i></button> -->
                 <div class="py-2 border-2 text-xs border-black rounded px-4 mr-4 flex items-center">
                   <i class="fa-solid fa-magnifying-glass"></i>
-                  <input class="outline-none mx-3" placeholder="Cari Product" (input)="onChangeSearch($event)" />
+                  <input class="outline-none mx-3" placeholder="Cari Product" (input)="onChangeSearch($event)" type="text" />
                 </div>
                 <button class="text-xs border-2 py-2 px-3 mr-4 border-black rounded hover:bg-black hover:text-white duration-300" (click)="openDialog()"><i class="fa-solid fa-plus"></i></button>
                 <button class="flex items-center border-2 py-2 px-4 border-black rounded hover:text-white hover:bg-black duration-300" (click)="handleBackButton()"><i class="fa-solid fa-caret-left mr-2"></i><span class="text-xs ">Back Page</span></button>
@@ -21,7 +21,7 @@
                 <button class="flex items-center border-2 py-2 px-4 border-black rounded hover:text-white hover:bg-black duration-300" (click)="handleNextBuutton()"><span class="text-xs">Next Page</span><i class="fa-solid fa-caret-right ml-2"></i></button>
               </div>
             </div>
-            <div class="w-full h-[95%] py-5">
+            <div class="w-full h-[95%] py-5 relative">
               <div class="w-full flex justify-between mb-2 border-b-2 py-3">
                 <h1 class="font-bold w-[20%]">Nama Product</h1>
                 <h1 class="font-bold w-[20%]">Stock</h1>
@@ -30,13 +30,16 @@
                 <h1 class="font-bold w-[20%]">Petugas</h1>
                 <h1 class="font-bold w-[20%]">Option</h1>
               </div>
-              <div class="w-full flex justify-between py-3.5 border-b-2 items-center" *ngFor="let product of dataPeroducts">
+              <div class="w-full flex justify-between py-3.5 border-b-2 items-center" *ngFor="let product of dataPeroducts" [style.visibility]="found_table">
                 <h1 class="w-[20%] text-sm">{{product.product_name}}</h1>
                 <h1 class="w-[20%] text-sm">{{product.ready_stock}}</h1>
                 <h1 class="w-[20%] text-sm">RP {{product.price}},00</h1>
                 <h1 class="w-[20%] text-sm">{{product.category}}</h1>
                 <h1 class="w-[20%] text-sm">{{product.user?.username}}</h1>
                 <h1 class="w-[20%] text-sm cursor-pointer" (click)="deleteData(product.id)">Hapus Data</h1>
+              </div>
+              <div class="absolute top-32 right-2/4" [style.visibility]="not_found_notification">
+                <p>Data Tidak Ditemukan!</p>
               </div>
             </div>
         </div>
